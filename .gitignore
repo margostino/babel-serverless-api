@@ -177,3 +177,6 @@ src/__pycache__/
 .vscode/
 
 config.toml
+
+prompts/
+tools/

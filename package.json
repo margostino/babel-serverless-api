@@ -1,0 +1,25 @@
+{
+  "name": "babel-api",
+  "version": "1.0.0",
+  "author": "margostino",
+  "description": "",
+  "repository": {
+    "url": "https://github.com/margostino/babel-api"
+  },
+  "main": "index.js",
+  "scripts": {
+    "check:types": "node ./node_modules/typescript/bin/tsc --noEmit",
+    "start": "vercel dev",
+    "test": "yarn test:unit && yarn test:integration",
+    "test:integration": "NODE_ENV=test jest --config jest.integration.js --passWithNoTests",
+    "test:unit": "NODE_ENV=test jest --config jest.unit.js --passWithNoTests"
+  },  
+  "keywords": [],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/node": "^20.14.8",
+    "@vercel/node": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  }
+}
