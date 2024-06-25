@@ -3,10 +3,10 @@
         "silent": true,
         "enabled": true
     },
-    "functions": {
-        "api/hello.ts": {
-            "memory": 1024,
-            "maxDuration": 10
-        }
+    "functions": {        
+      "api/hello/**/*.ts": {
+        "memory": 1024,
+        "maxDuration": 30
+      }
     }
 }
