@@ -4,7 +4,7 @@
         "enabled": true
     },
     "functions": {        
-      "src/api/**/*.ts": {
+      "src/api/*.ts": {
         "memory": 1024,
         "maxDuration": 30
       }
