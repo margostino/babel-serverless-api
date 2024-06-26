@@ -5,4 +5,8 @@ dist
 flow-typed
 generated
 coverage
-.*
+
+/node_modules
+/dist
+/coverage
+jest.setup.ts

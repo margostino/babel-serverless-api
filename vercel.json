@@ -5,8 +5,14 @@
     },
     "functions": {        
       "api/hello.ts": {
+        "maxDuration": 10
+      },
+      "api/ping.ts": {
+        "maxDuration": 10
+      },
+      "api/handler.ts": {
         "memory": 1024,
         "maxDuration": 30
-      }
+      }      
     }
 }

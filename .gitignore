@@ -224,3 +224,4 @@ tsconfig.tsbuildinfo
 /.nvmrc
 
 /.tmp
+.vercel
