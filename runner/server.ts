@@ -1,6 +1,6 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import express from 'express'
-import { Handler } from '../api/handler'
+import { HandleGateway } from '../api/gateway'
 import { Hello } from '../api/hello'
 import { Ping } from '../api/ping'
 
@@ -18,7 +18,7 @@ const handlerWrapper = (handler: (req: VercelRequest, res: VercelResponse) => vo
 
 app.get('/hello', handlerWrapper(Hello))
 app.get('/ping', handlerWrapper(Ping))
-app.post('/handler', handlerWrapper(Handler))
+app.get('/babel', handlerWrapper(HandleGateway))
 
 const port = 3000
 app.listen(port, () => {

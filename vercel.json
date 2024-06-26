@@ -10,7 +10,7 @@
       "api/ping.ts": {
         "maxDuration": 10
       },
-      "api/handler.ts": {
+      "api/babel.ts": {
         "memory": 1024,
         "maxDuration": 30
       }      
