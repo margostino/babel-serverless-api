@@ -1,3 +1,6 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import express from 'express'
 import { HandleGateway } from '../api/gateway'
