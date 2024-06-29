@@ -1,14 +1,14 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { isAdmin, isAuthorized } from '../internal/auth'
+import { isAdmin, isAuthorized } from '../src/auth'
 import {
   GITHUB_MEMORY_ASSISTANT_PROMPT_PATH,
   GITHUB_MEMORY_CLASSIFICATION_PROMPT_PATH,
   OPENAI_MODEL,
-} from '../internal/constant'
-import { getIndex, getPrompt } from '../internal/github'
-import { getMemoriesByKeys } from '../internal/memories'
-import { ChatCompletion } from '../internal/openai'
-import { chatCompletionToFirstChoiceMessageContent } from '../internal/utils/chatCompletionToFirstChoiceMessageContent'
+} from '../src/constant'
+import { getIndex, getPrompt } from '../src/github'
+import { getMemoriesByKeys } from '../src/memories'
+import { ChatCompletion } from '../src/openai'
+import { chatCompletionToFirstChoiceMessageContent } from '../src/utils/chatCompletionToFirstChoiceMessageContent'
 
 let memoryClassificationPrompt: { prompt: string }
 let memoryAssistantPrompt: { prompt: string }

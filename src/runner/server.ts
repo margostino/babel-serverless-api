@@ -3,9 +3,9 @@ dotenv.config()
 
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import express from 'express'
-import { HandleGateway } from '../api/gateway'
-import { Hello } from '../api/hello'
-import { Ping } from '../api/ping'
+import { HandleGateway } from '../../api/babel'
+import { Hello } from '../../api/hello'
+import { Ping } from '../../api/ping'
 
 const app = express()
 

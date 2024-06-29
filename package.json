@@ -9,7 +9,7 @@
   "scripts": {
     "check:types": "node ./node_modules/typescript/bin/tsc --noEmit",
     "start:vercel": "nodemon --exec vercel dev",
-    "start:dev": "NODE_ENV=development nodemon --exec ts-node --files runner/server.ts",
+    "start:dev": "NODE_ENV=development nodemon --exec ts-node -r tsconfig-paths/register --files src/runner/server.ts",
     "test": "yarn test:unit && yarn test:integration",
     "test:integration": "NODE_ENV=test jest --config jest.integration.js --passWithNoTests",
     "test:unit": "NODE_ENV=test jest --config jest.unit.js --passWithNoTests"
@@ -36,6 +36,7 @@
     "@types/js-yaml": "^4.0.9",
     "express-async-router": "^0.1.15",
     "js-yaml": "^4.1.0",
-    "openai": "^4.52.1"
+    "openai": "^4.52.1",
+    "tsconfig-paths": "^4.2.0"
   }
 }

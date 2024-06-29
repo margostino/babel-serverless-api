@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { getRandomMessage } from '../internal/utils/randomMessages'
+import { getRandomMessage } from '../src/utils/randomMessages'
 
 export const Hello = (request: VercelRequest, response: VercelResponse) => {
   const { name = 'World' } = request.query
