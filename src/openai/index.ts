@@ -1,5 +1,5 @@
-import { OPENAI_API_BASE_URL, OPENAI_API_KEY } from '@/constant'
 import OpenAI from 'openai'
+import { OPENAI_API_BASE_URL, OPENAI_API_KEY } from '../constants'
 
 const openAiClient = new OpenAI({
   baseURL: OPENAI_API_BASE_URL,

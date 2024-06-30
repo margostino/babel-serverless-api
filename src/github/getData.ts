@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GITHUB_REPO_DATA, GITHUB_TOKEN, GITHUB_USERNAME } from '../constant'
+import { GITHUB_REPO_DATA, GITHUB_TOKEN, GITHUB_USERNAME } from '../constants'
 
 export const getData = async (filePath: string) => {
   const repoOwner = GITHUB_USERNAME

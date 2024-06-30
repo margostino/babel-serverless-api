@@ -4,7 +4,7 @@ import {
   GITHUB_REPO_METADATA_INDEX_PATH,
   GITHUB_TOKEN,
   GITHUB_USERNAME,
-} from '../constant'
+} from '../constants'
 
 export const getIndex = async () => {
   const repoOwner = GITHUB_USERNAME

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GITHUB_TOKEN, GITHUB_USERNAME } from '../constant'
+import { GITHUB_TOKEN, GITHUB_USERNAME } from '../constants'
 
 export const getResource = async (repoName: string, filePath: string): Promise<any> => {
   const repoOwner = GITHUB_USERNAME

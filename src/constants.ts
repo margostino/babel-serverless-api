@@ -30,6 +30,8 @@ export const BABEL_ADMIN_TOKEN = process.env.BABEL_ADMIN_TOKEN ? process.env.BAB
 
 export const BABEL_API_TOKEN = process.env.BABEL_API_TOKEN ? process.env.BABEL_API_TOKEN : ''
 
+export const PORT_DEV_SERVER = process.env.PORT_DEV_SERVER ? process.env.PORT_DEV_SERVER : 3000
+
 export const HEADERS = {
   AUTHORIZATION: 'authorization',
   X_BABEL_ADMIN_TOKEN: 'x-babel-admin-token',

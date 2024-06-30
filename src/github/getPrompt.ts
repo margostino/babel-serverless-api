@@ -1,5 +1,5 @@
 import yaml from 'js-yaml'
-import { GITHUB_REPO_PROMPTS } from '../constant'
+import { GITHUB_REPO_PROMPTS } from '../constants'
 import { getResource } from './getResource'
 
 export const getPrompt = async (filePath: string) => {

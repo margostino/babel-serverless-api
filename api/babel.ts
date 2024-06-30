@@ -4,7 +4,7 @@ import {
   GITHUB_MEMORY_ASSISTANT_PROMPT_PATH,
   GITHUB_MEMORY_CLASSIFICATION_PROMPT_PATH,
   OPENAI_MODEL,
-} from '../src/constant'
+} from '../src/constants'
 import { getIndex, getPrompt } from '../src/github'
 import { getMemoriesByKeys } from '../src/memories'
 import { ChatCompletion } from '../src/openai'

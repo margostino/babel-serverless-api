@@ -14,14 +14,5 @@
         "memory": 1024,
         "maxDuration": 30
       }      
-    },
-    "builds": [
-        {
-          "src": "api/**/*.js",
-          "use": "@vercel/node",
-          "config": {
-            "includeFiles": ["src/**", "api/**"]
-          }
-        }
-      ]
+    }
 }
