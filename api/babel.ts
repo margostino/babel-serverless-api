@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { isAdmin, isAuthorized } from '../src/auth'
+import { shouldHandleRequest } from '../src/auth'
 import {
   GITHUB_MEMORY_ASSISTANT_PROMPT_PATH,
   GITHUB_MEMORY_CLASSIFICATION_PROMPT_PATH,
@@ -14,7 +14,7 @@ let memoryClassificationPrompt: { prompt: string }
 let memoryAssistantPrompt: { prompt: string }
 
 export const HandleGateway = async (request: VercelRequest, response: VercelResponse) => {
-  if (!(isAdmin(request) && isAuthorized(request))) {
+  if (!shouldHandleRequest(request)) {
     response.status(401).json({
       error: 'Unauthorized',
     })
