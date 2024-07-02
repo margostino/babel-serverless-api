@@ -8,8 +8,7 @@
   },
   "scripts": {
     "check:types": "node ./node_modules/typescript/bin/tsc --noEmit",
-    "start:vercel": "nodemon --exec vercel dev",
-    "start:dev": "NODE_ENV=development PORT_DEV_SERVER=9000 nodemon --exec ts-node --files src/runner/server.ts",
+    "start:vercel": "nodemon --exec vercel dev --listen 9000",
     "test": "yarn test:unit && yarn test:integration",
     "test:integration": "NODE_ENV=test jest --config jest.integration.js --passWithNoTests",
     "test:unit": "NODE_ENV=test jest --config jest.unit.js --passWithNoTests"
