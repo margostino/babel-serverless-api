@@ -21,6 +21,8 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
     return
   }
 
+  console.log(`new request: ${JSON.stringify(request.body)}`)
+
   const { query } = request.query
 
   if (!memoryClassificationPrompt) {
