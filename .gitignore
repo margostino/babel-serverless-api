@@ -225,3 +225,5 @@ tsconfig.tsbuildinfo
 
 /.tmp
 .vercel
+
+notebooks/
