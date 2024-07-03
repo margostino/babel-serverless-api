@@ -11,7 +11,7 @@ const defaultChatCompletionBody = {
   temperature: 0,
 }
 
-export const ChatCompletion = async (
+export const GetChatCompletion = async (
   body: OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming,
   options?: OpenAI.RequestOptions<unknown> | undefined
 ) => {

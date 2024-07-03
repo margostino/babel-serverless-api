@@ -1,13 +1,11 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { shouldHandleRequest } from '../src/auth'
+import { GetChatCompletion, getMemoriesByKeys, logger, shouldHandleRequest } from '../src'
 import {
   GITHUB_MEMORY_ASSISTANT_PROMPT_PATH,
   GITHUB_MEMORY_CLASSIFICATION_PROMPT_PATH,
   OPENAI_MODEL,
 } from '../src/constants'
 import { getIndex, getPrompt } from '../src/github'
-import { getMemoriesByKeys } from '../src/memories'
-import { ChatCompletion } from '../src/openai'
 import { chatCompletionToFirstChoiceMessageContent } from '../src/utils/chatCompletionToFirstChoiceMessageContent'
 
 let memoryClassificationPrompt: { prompt: string }
@@ -23,26 +21,26 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
 
   const { query } = request.query
 
-  console.log(`new request: ${query}`)
+  logger.info(`new request: ${query}`)
 
   if (!memoryClassificationPrompt) {
-    console.log('getting memory classification prompt')
+    logger.info('getting memory classification prompt')
     memoryClassificationPrompt = await getPrompt(GITHUB_MEMORY_CLASSIFICATION_PROMPT_PATH)
-    console.log('got memory classification prompt')
+    logger.info('got memory classification prompt')
   }
 
   if (!memoryAssistantPrompt) {
-    console.log('getting memory assistant prompt')
+    logger.info('getting memory assistant prompt')
     memoryAssistantPrompt = await getPrompt(GITHUB_MEMORY_ASSISTANT_PROMPT_PATH)
-    console.log('got memory assistant prompt')
+    logger.info('got memory assistant prompt')
   }
 
-  console.log('getting index')
+  logger.info('getting index')
   const metadata = await getIndex()
-  console.log('got index')
+  logger.info('got index')
 
-  console.log('getting classifier completion')
-  const classifierCompletion = await ChatCompletion({
+  logger.info('getting classifier completion')
+  const classifierCompletion = await GetChatCompletion({
     model: OPENAI_MODEL,
     response_format: { type: 'json_object' },
     temperature: 0,
@@ -57,15 +55,15 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
     chatCompletionToFirstChoiceMessageContent(classifierCompletion)
 
   if (classifierCompletionContent) {
-    console.log('got classifier completion')
+    logger.info('got classifier completion')
     // TODO: validate the response format
     const classification = JSON.parse(classifierCompletionContent)
     const keys = classification['keys']
 
     const memoriesAssets = await getMemoriesByKeys(keys)
 
-    console.log('getting assistant completion')
-    const assistantCompletionResponse = await ChatCompletion({
+    logger.info('getting assistant completion')
+    const assistantCompletionResponse = await GetChatCompletion({
       model: OPENAI_MODEL,
       response_format: { type: 'json_object' },
       temperature: 0,
@@ -81,7 +79,7 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
     )
 
     if (assistantCompletionContent) {
-      console.log('got assistant completion')
+      logger.info('got assistant completion')
       const assistantResponse = {
         ...JSON.parse(assistantCompletionContent),
         sources: keys,
@@ -91,7 +89,7 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
         message: assistantResponse,
       })
     } else {
-      console.log('no assistant completion content')
+      logger.info('no assistant completion content')
       response.status(200).json({
         error: 'No message content found',
       })
@@ -99,7 +97,7 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
     return
   }
 
-  console.log('no classifier completion content')
+  logger.info('no classifier completion content')
   response.status(200).json({
     error: 'No message content found',
   })

@@ -36,6 +36,8 @@
     "express-async-router": "^0.1.15",
     "js-yaml": "^4.1.0",
     "openai": "^4.52.1",
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "winston": "^3.13.0",
+    "winston-transport": "^4.7.0"
   }
 }
