@@ -21,20 +21,27 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
     return
   }
 
-  console.log(`new request: ${JSON.stringify(request.body)}`)
-
   const { query } = request.query
 
+  console.log(`new request: ${query}`)
+
   if (!memoryClassificationPrompt) {
+    console.log('getting memory classification prompt')
     memoryClassificationPrompt = await getPrompt(GITHUB_MEMORY_CLASSIFICATION_PROMPT_PATH)
+    console.log('got memory classification prompt')
   }
 
   if (!memoryAssistantPrompt) {
+    console.log('getting memory assistant prompt')
     memoryAssistantPrompt = await getPrompt(GITHUB_MEMORY_ASSISTANT_PROMPT_PATH)
+    console.log('got memory assistant prompt')
   }
 
+  console.log('getting index')
   const metadata = await getIndex()
+  console.log('got index')
 
+  console.log('getting classifier completion')
   const classifierCompletion = await ChatCompletion({
     model: OPENAI_MODEL,
     response_format: { type: 'json_object' },
@@ -50,12 +57,14 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
     chatCompletionToFirstChoiceMessageContent(classifierCompletion)
 
   if (classifierCompletionContent) {
+    console.log('got classifier completion')
     // TODO: validate the response format
     const classification = JSON.parse(classifierCompletionContent)
     const keys = classification['keys']
 
     const memoriesAssets = await getMemoriesByKeys(keys)
 
+    console.log('getting assistant completion')
     const assistantCompletionResponse = await ChatCompletion({
       model: OPENAI_MODEL,
       response_format: { type: 'json_object' },
@@ -72,6 +81,7 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
     )
 
     if (assistantCompletionContent) {
+      console.log('got assistant completion')
       const assistantResponse = {
         ...JSON.parse(assistantCompletionContent),
         sources: keys,
@@ -81,6 +91,7 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
         message: assistantResponse,
       })
     } else {
+      console.log('no assistant completion content')
       response.status(200).json({
         error: 'No message content found',
       })
@@ -88,6 +99,7 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
     return
   }
 
+  console.log('no classifier completion content')
   response.status(200).json({
     error: 'No message content found',
   })

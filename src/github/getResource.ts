@@ -17,9 +17,9 @@ export const getResource = async (repoName: string, filePath: string): Promise<a
     if (response.status === 200) {
       return response.data
     } else {
-      throw new Error(`Error: Received status code ${response.status}`)
+      throw new Error(`Error: Received status code ${response.status} for ${filePath}`)
     }
   } catch (error) {
-    throw new Error(`Failed to fetch file from GitHub: ${(error as Error).message}`)
+    throw new Error(`Failed to fetch file from GitHub (${filePath}): ${(error as Error).message}`)
   }
 }
