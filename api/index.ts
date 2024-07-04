@@ -22,6 +22,7 @@ export const handleRequest = async (request: VercelRequest, response: VercelResp
   const { query, isEcho } = request.query
 
   if (isEcho === 'true') {
+    logger.info(`echo request: ${query}`)
     response.status(200).json({
       message: {
         thinking_process: 'this is just an echo',
