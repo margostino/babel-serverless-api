@@ -1,0 +1,12 @@
+name: post deployment
+on: [deployment_status]
+
+jobs:
+  successful_deploy:
+    if: ${{ github.event.deployment_status.state == 'success' }}
+    name: successful_deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: babel warm up
+        run: |
+          curl -H "Authorization: Bearer ${{ secrets.BABEL_API_TOKEN }}" -s -X GET "https://babel-gateway.vercel.app/api/index?query=hej&isEcho=true" | jq .
