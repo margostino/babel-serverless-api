@@ -11,7 +11,7 @@ import { chatCompletionToFirstChoiceMessageContent } from '../src/utils/chatComp
 let memoryClassificationPrompt: { prompt: string }
 let memoryAssistantPrompt: { prompt: string }
 
-export const HandleGateway = async (request: VercelRequest, response: VercelResponse) => {
+export const handleRequest = async (request: VercelRequest, response: VercelResponse) => {
   if (!shouldHandleRequest(request)) {
     response.status(401).json({
       error: 'Unauthorized',
@@ -19,7 +19,18 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
     return
   }
 
-  const { query } = request.query
+  const { query, isEcho } = request.query
+
+  if (isEcho === 'true') {
+    response.status(200).json({
+      message: {
+        thinking_process: 'this is just an echo',
+        response: query,
+        sources: [],
+      },
+    })
+    return
+  }
 
   logger.info(`new request: ${query}`)
 
@@ -103,4 +114,4 @@ export const HandleGateway = async (request: VercelRequest, response: VercelResp
   })
 }
 
-export default HandleGateway
+export default handleRequest
