@@ -96,7 +96,7 @@ export const handleRequest = async (request: VercelRequest, response: VercelResp
         ...JSON.parse(assistantCompletionContent),
         sources: keys,
       }
-
+      logger.info('sending response')
       response.status(200).json({
         message: assistantResponse,
       })
