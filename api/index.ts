@@ -21,6 +21,8 @@ export const handleRequest = async (request: VercelRequest, response: VercelResp
 
   const { query, isEcho } = request.query
 
+  logger.info(`new request: ${query}`)
+
   if (isEcho === 'true') {
     logger.info(`echo request: ${query}`)
     response.status(200).json({
@@ -32,8 +34,6 @@ export const handleRequest = async (request: VercelRequest, response: VercelResp
     })
     return
   }
-
-  logger.info(`new request: ${query}`)
 
   if (!memoryClassificationPrompt) {
     logger.info('getting memory classification prompt')
