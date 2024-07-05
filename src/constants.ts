@@ -1,5 +1,12 @@
 // TODO: validate
 
+import { splitVariable } from './utils'
+
+export const HEADERS = {
+  AUTHORIZATION: 'authorization',
+  X_BABEL_ADMIN_TOKEN: 'x-babel-admin-token',
+}
+
 export const GITHUB_TOKEN = process.env.GITHUB_TOKEN || ''
 export const OPENAI_API_BASE_URL = process.env.OPENAI_HOST || 'https://api.openai.com/v1'
 export const OPENAI_API_KEY = process.env.OPENAI_API_KEY || ''
@@ -26,7 +33,6 @@ export const BABEL_API_TOKEN = process.env.BABEL_API_TOKEN || ''
 
 export const PORT_DEV_SERVER = process.env.PORT_DEV_SERVER ?? 3000
 
-export const HEADERS = {
-  AUTHORIZATION: 'authorization',
-  X_BABEL_ADMIN_TOKEN: 'x-babel-admin-token',
-}
+export const MINIMAL_HEADERS = splitVariable(process.env.MINIMAL_HEADERS)
+
+export const REQUIRED_HEADERS = splitVariable(process.env.REQUIRED_HEADERS)
