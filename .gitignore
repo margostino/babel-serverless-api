@@ -227,3 +227,5 @@ tsconfig.tsbuildinfo
 .vercel
 
 notebooks/
+notebooks/*
+notebooks/*_lab.ipynb
