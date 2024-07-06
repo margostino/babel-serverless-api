@@ -12,7 +12,6 @@ let memoryClassificationPrompt: { prompt: string }
 let memoryAssistantPrompt: { prompt: string }
 
 export const handleRequest = async (request: VercelRequest, response: VercelResponse) => {
-  console.log(request.headers)
   if (!shouldHandleRequest(request)) {
     response.status(401).json({
       error: 'Unauthorized',
