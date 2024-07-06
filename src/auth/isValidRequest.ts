@@ -20,5 +20,5 @@ const validateHeaders = (headers: IncomingHttpHeaders) => {
 }
 
 export const isValidRequest = (req: VercelRequest) => {
-  return req.method === 'POST' && validateHeaders(req.headers)
+  return validateHeaders(req.headers)
 }
