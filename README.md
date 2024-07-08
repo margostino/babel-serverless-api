@@ -1,6 +1,6 @@
 # ⚡️ Babel API
 
-(This project is under Babel Foundation project. You can read the manifest [here](https://github.com/margostino/babel-foundation))
+(This project is under Babel Foundation initiative. You can read the manifest [here](https://github.com/margostino/babel-foundation))
 
 The gateway service for interacting with Babel data. This API processes natural language queries, searches indexed metadata, and returns relevant responses by leveraging advanced Large Language Models (LLMs).
 
@@ -8,6 +8,10 @@ Babel data is a collection of human consciousness and memory assets captured and
 
 - Store your personal data in the structured folders.
 - Ensure each asset is properly indexed for optimal performance.
+
+<p align="center">
+  <img src="https://github.com/margostino/babel-foundation/blob/master/assets/babel-architecture.png?raw=true" alt="Babel Foundation Architecture"/>
+</p>
 
 ## Structure
 
