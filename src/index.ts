@@ -1,4 +1,4 @@
-export { shouldHandleRequest } from './auth'
+export { handleRequest } from './handler'
 export { logger } from './logger'
 export { getMemoriesByKeys } from './memory'
 export { GetChatCompletion } from './openai'
