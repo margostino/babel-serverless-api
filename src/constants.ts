@@ -36,3 +36,5 @@ export const PORT_DEV_SERVER = process.env.PORT_DEV_SERVER ?? 3000
 export const MINIMAL_HEADERS = splitVariable(process.env.MINIMAL_HEADERS)
 
 export const REQUIRED_HEADERS = splitVariable(process.env.REQUIRED_HEADERS)
+
+export const ENV = process.env.VERCEL_ENV || ''
