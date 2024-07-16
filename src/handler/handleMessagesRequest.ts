@@ -2,6 +2,7 @@ import { VercelRequest, VercelResponse } from '@vercel/node'
 import { shouldHandleRequest } from '../auth'
 import { getMessages } from '../google'
 import { logger } from '../logger'
+import { getMessagesToJson } from '../transformations/getMessagesToJson'
 import { handleEcho } from './handleEcho'
 
 export const handleMessagesRequest = async (request: VercelRequest, response: VercelResponse) => {
@@ -20,14 +21,7 @@ export const handleMessagesRequest = async (request: VercelRequest, response: Ve
     jsonResponse = await handleEcho('echo getting messages')
   } else {
     const messages = await getMessages()
-    const transformedMessages = messages?.map((message) => {
-      const jsonMessage = JSON.parse(message[1])
-      return {
-        timestamp: message[0],
-        sender: jsonMessage['sender'],
-        content: jsonMessage['content'],
-      }
-    })
+    const transformedMessages = getMessagesToJson(messages)
     jsonResponse = {
       messages: transformedMessages,
     }

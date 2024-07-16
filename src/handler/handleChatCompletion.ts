@@ -9,10 +9,12 @@ export const handleChatCompletion = async ({
   query,
   memoryClassificationPrompt,
   memoryAssistantPrompt,
+  messages,
 }: {
   query: string | string[]
   memoryClassificationPrompt: string
   memoryAssistantPrompt: string
+  messages: any[] | undefined
 }) => {
   logger.info('getting index')
   const metadata = await getIndex()
@@ -26,6 +28,7 @@ export const handleChatCompletion = async ({
     messages: [
       { role: 'system', content: memoryClassificationPrompt },
       { role: 'user', content: `Query: ${query}` },
+      { role: 'user', content: `Chat History: ${JSON.stringify(messages)}` },
       { role: 'system', content: `Metadata: ${JSON.stringify(metadata)}` },
     ],
   })
