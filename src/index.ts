@@ -1,4 +1,9 @@
-export { handleRequest } from './handler'
+export {
+  handleCompletionRequest,
+  handleMessagesRequest,
+  handleSaveMessageRequest,
+  handleSecureRequest,
+} from './handler'
 export { logger } from './logger'
 export { getMemoriesByKeys } from './memory'
 export { GetChatCompletion } from './openai'

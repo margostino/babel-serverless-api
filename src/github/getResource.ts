@@ -1,7 +1,11 @@
 import axios from 'axios'
 import { GITHUB_TOKEN, GITHUB_USERNAME } from '../constants'
 
-export const getResource = async (repoName: string, filePath: string): Promise<any> => {
+export const getResource = async (
+  repoName: string,
+  filePath: string,
+  acceptHeader: string = 'application/vnd.github.v3.raw'
+): Promise<any> => {
   const repoOwner = GITHUB_USERNAME
   const githubToken = GITHUB_TOKEN
   const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`
@@ -10,7 +14,7 @@ export const getResource = async (repoName: string, filePath: string): Promise<a
     const response = await axios.get(apiUrl, {
       headers: {
         Authorization: `Bearer ${githubToken}`,
-        Accept: 'application/vnd.github.v3.raw',
+        Accept: acceptHeader,
       },
     })
 

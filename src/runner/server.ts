@@ -3,8 +3,8 @@ dotenv.config()
 
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import express from 'express'
+import { handleRequest } from '../../api/completion'
 import { hello } from '../../api/hello'
-import { handleRequest } from '../../api/index'
 import { ping } from '../../api/ping'
 import { PORT_DEV_SERVER } from '../constants'
 

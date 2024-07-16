@@ -25,6 +25,10 @@ export const GITHUB_MEMORY_ASSISTANT_PROMPT_PATH =
 
 export const GITHUB_REPO_DATA = process.env.GITHUB_REPO_DATA || ''
 
+export const GITHUB_REPO_CONVERSATION_PATH = process.env.GITHUB_REPO_CONVERSATION_PATH || ''
+
+export const GITHUB_REPO_PARKING_PATH = process.env.GITHUB_REPO_PARKING_PATH || ''
+
 export const GITHUB_REPO_METADATA_INDEX_PATH = process.env.GITHUB_REPO_METADATA_INDEX_PATH || ''
 
 export const BABEL_ADMIN_TOKEN = process.env.BABEL_ADMIN_TOKEN || ''

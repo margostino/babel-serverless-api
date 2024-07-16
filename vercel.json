@@ -10,9 +10,17 @@
       "api/ping.ts": {
         "maxDuration": 5
       },
-      "api/index.ts": {
+      "api/completion.ts": {
         "memory": 1024,
         "maxDuration": 60
-      }      
+      },
+      "api/messages.ts": {
+        "memory": 1024,
+        "maxDuration": 60
+      },
+      "api/saveMessage.ts": {
+        "memory": 1024,
+        "maxDuration": 60
+      }            
     }
 }
