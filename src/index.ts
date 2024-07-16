@@ -7,4 +7,8 @@ export {
 export { logger } from './logger'
 export { getMemoriesByKeys } from './memory'
 export { GetChatCompletion } from './openai'
-export { chatCompletionToFirstChoiceMessageContent, getRandomMessage } from './utils'
+export {
+  chatCompletionToFirstChoiceMessageContent,
+  decodeBase64ToJson,
+  getRandomMessage,
+} from './utils'

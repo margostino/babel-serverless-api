@@ -25,8 +25,6 @@ export const GITHUB_MEMORY_ASSISTANT_PROMPT_PATH =
 
 export const GITHUB_REPO_DATA = process.env.GITHUB_REPO_DATA || ''
 
-export const GITHUB_REPO_CONVERSATION_PATH = process.env.GITHUB_REPO_CONVERSATION_PATH || ''
-
 export const GITHUB_REPO_PARKING_PATH = process.env.GITHUB_REPO_PARKING_PATH || ''
 
 export const GITHUB_REPO_METADATA_INDEX_PATH = process.env.GITHUB_REPO_METADATA_INDEX_PATH || ''
@@ -42,3 +40,15 @@ export const MINIMAL_HEADERS = splitVariable(process.env.MINIMAL_HEADERS)
 export const REQUIRED_HEADERS = splitVariable(process.env.REQUIRED_HEADERS)
 
 export const ENV = process.env.VERCEL_ENV || ''
+
+export const GOOGLE_SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || ''
+
+export const GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY =
+  process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || ''
+
+export const GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID || ''
+
+export const GOOGLE_SHEET_RANGE = process.env.GOOGLE_SHEET_RANGE || ''
+
+export const GOOGLE_SERVICE_ACCOUNT_CREDENTIALS =
+  process.env.GOOGLE_SERVICE_ACCOUNT_CREDENTIALS || ''

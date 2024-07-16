@@ -1,4 +1,5 @@
 export { chatCompletionToFirstChoiceMessageContent } from './chatCompletionToFirstChoiceMessageContent'
 export { decodeBase64 } from './decodeBase64'
+export { decodeBase64ToJson } from './decodeBase64ToJson'
 export { getRandomMessage } from './getRandomMessage'
 export { splitVariable } from './splitVariable'
