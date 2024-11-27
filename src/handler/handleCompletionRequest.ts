@@ -1,5 +1,4 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { shouldHandleRequest } from '../auth'
 import { getMessages } from '../google'
 import { logger } from '../logger'
 import { getMessagesToJson } from '../transformations/getMessagesToJson'
@@ -9,12 +8,6 @@ import { loadPrompts } from './loadPrompts'
 
 export const handleCompletionRequest = async (request: VercelRequest, response: VercelResponse) => {
   let jsonResponse = null
-  if (!shouldHandleRequest(request)) {
-    response.status(401).json({
-      error: 'Unauthorized',
-    })
-    return
-  }
 
   const { query, isEcho } = request.query
 
@@ -22,9 +15,9 @@ export const handleCompletionRequest = async (request: VercelRequest, response: 
   if (isEcho === 'true') {
     jsonResponse = await handleEcho(query)
   } else {
-    const messages = await getMessages()
-    const transformedMessages = getMessagesToJson(messages)
-    const { memoryClassificationPrompt, memoryAssistantPrompt } = await loadPrompts()
+    const result = await Promise.all([getMessages(), loadPrompts()])
+    const transformedMessages = getMessagesToJson(result[0])
+    const { memoryClassificationPrompt, memoryAssistantPrompt } = result[1]
     jsonResponse = await handleChatCompletion({
       memoryAssistantPrompt,
       memoryClassificationPrompt,

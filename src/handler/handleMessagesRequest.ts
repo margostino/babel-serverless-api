@@ -1,5 +1,4 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { shouldHandleRequest } from '../auth'
 import { getMessages } from '../google'
 import { logger } from '../logger'
 import { getMessagesToJson } from '../transformations/getMessagesToJson'
@@ -7,12 +6,6 @@ import { handleEcho } from './handleEcho'
 
 export const handleMessagesRequest = async (request: VercelRequest, response: VercelResponse) => {
   let jsonResponse = null
-  if (!shouldHandleRequest(request)) {
-    response.status(401).json({
-      error: 'Unauthorized',
-    })
-    return
-  }
 
   const { isEcho } = request.query
 
