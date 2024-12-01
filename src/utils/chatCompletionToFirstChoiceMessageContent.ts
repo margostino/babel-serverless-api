@@ -1,4 +1,4 @@
-import { ChatCompletion } from 'openai/resources'
+import { ChatCompletion } from 'openai/resources';
 
 export const chatCompletionToFirstChoiceMessageContent = (
   chatCompletion: ChatCompletion
